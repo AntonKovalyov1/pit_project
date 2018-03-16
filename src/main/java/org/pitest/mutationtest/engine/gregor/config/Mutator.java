@@ -49,6 +49,7 @@ import org.pitest.mutationtest.engine.gregor.mutators.RemoveConditionalMutator;
 import org.pitest.mutationtest.engine.gregor.mutators.RemoveConditionalMutator.Choice;
 import org.pitest.mutationtest.engine.gregor.mutators.ReturnValsMutator;
 import org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator;
+import org.pitest.mutationtest.engine.gregor.mutators.custom.AOD;
 import org.pitest.mutationtest.engine.gregor.mutators.custom.ROR;
 import org.pitest.mutationtest.engine.gregor.mutators.experimental.NakedReceiverMutator;
 import org.pitest.mutationtest.engine.gregor.mutators.experimental.RemoveIncrementsMutator;
@@ -278,6 +279,11 @@ public final class Mutator {
         };
     }
     
+    private static Collection<MethodMutatorFactory> aodMutators() {
+        return group(AOD.FIRST_OPERAND_MUTATOR, 
+                     AOD.SECOND_OPERAND_MUTATOR);
+    }
+    
     private static Collection<MethodMutatorFactory> rorMutators() {
         return group(ROR.ROR_EQUALS_MUTATOR, ROR.ROR_GREATER_THAN_MUTATOR, 
                 ROR.ROR_GREATER_THAN_OR_EQUALS_MUTATOR, 
@@ -286,6 +292,6 @@ public final class Mutator {
     }
     
     private static Collection<MethodMutatorFactory> custom() {
-        return rorMutators();
+        return combine(aodMutators(), rorMutators());
     }
 }

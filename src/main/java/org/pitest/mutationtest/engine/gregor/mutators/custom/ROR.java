@@ -69,7 +69,7 @@ public enum ROR implements MethodMutatorFactory {
 
     @Override
     public String getGloballyUniqueId() {
-        return this.getClass().getName();
+        return this.getClass().getName() + "_" + getName();
     }
 
     @Override
@@ -149,13 +149,13 @@ class NotEqualsMethodVisitor extends AbstractJumpMutator {
         MUTATIONS.put(Opcodes.IF_ICMPGE, new Substitution(Opcodes.IF_ICMPNE, 
                 "ROR: >= replaced with !="));
 
-        //replace > with ==
+        //replace > with !=
         MUTATIONS.put(Opcodes.IFGT, new Substitution(Opcodes.IFNE, 
                 "ROR: > replaced with !="));
         MUTATIONS.put(Opcodes.IF_ICMPGT, new Substitution(Opcodes.IF_ICMPNE, 
                 "ROR: > replaced with !="));
 
-        //replace < with ==
+        //replace < with !=
         MUTATIONS.put(Opcodes.IFLT, new Substitution(Opcodes.IFNE, 
                 "ROR: < replaced with !="));
         MUTATIONS.put(Opcodes.IF_ICMPLT, new Substitution(Opcodes.IF_ICMPNE, 
