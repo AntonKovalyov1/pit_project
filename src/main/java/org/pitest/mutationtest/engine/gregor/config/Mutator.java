@@ -50,6 +50,7 @@ import org.pitest.mutationtest.engine.gregor.mutators.RemoveConditionalMutator.C
 import org.pitest.mutationtest.engine.gregor.mutators.ReturnValsMutator;
 import org.pitest.mutationtest.engine.gregor.mutators.VoidMethodCallMutator;
 import org.pitest.mutationtest.engine.gregor.mutators.custom.AOD;
+import org.pitest.mutationtest.engine.gregor.mutators.custom.AOR;
 import org.pitest.mutationtest.engine.gregor.mutators.custom.ROR;
 import org.pitest.mutationtest.engine.gregor.mutators.experimental.NakedReceiverMutator;
 import org.pitest.mutationtest.engine.gregor.mutators.experimental.RemoveIncrementsMutator;
@@ -67,6 +68,16 @@ public final class Mutator {
          * ROR mutators
          */
         addGroup("ROR", rorMutators());
+        
+        /**
+         * AOD mutators
+         */
+        addGroup("AOD", aodMutators());
+        
+        /**
+         * AOR mutators
+         */
+        addGroup("AOR", aorMutators());
         
         /**
          * Default mutator that inverts the negation of integer and floating
@@ -291,7 +302,13 @@ public final class Mutator {
                 ROR.ROR_NOT_EQUALS_MUTATOR);
     }
     
+    private static Collection<MethodMutatorFactory> aorMutators() {
+        return group(AOR.ADDITION_MUTATOR, AOR.DIVISION_MUTATOR, 
+                AOR.MODULUS_MUTATOR, AOR.MULTIPLICATION_MUTATOR, 
+                AOR.SUBTRACTION_MUTATOR);
+    }
+    
     private static Collection<MethodMutatorFactory> custom() {
-        return combine(aodMutators(), rorMutators());
+        return combine(combine(aodMutators(), rorMutators()), aorMutators());
     }
 }
