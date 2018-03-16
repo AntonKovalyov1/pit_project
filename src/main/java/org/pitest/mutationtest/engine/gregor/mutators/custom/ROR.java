@@ -112,6 +112,14 @@ class EqualsMethodVisitor extends AbstractJumpMutator {
                 "ROR: < replaced with =="));
         MUTATIONS.put(Opcodes.IF_ICMPLT, new Substitution(Opcodes.IF_ICMPEQ, 
                 "ROR: < replaced with =="));
+        
+        //replace != with == (reference)
+        MUTATIONS.put(Opcodes.IF_ACMPNE, new Substitution(Opcodes.IF_ACMPEQ, 
+                "ROR: != replaced with == (reference)"));
+        
+        //replace != null with == null
+        MUTATIONS.put(Opcodes.IFNONNULL, new Substitution(Opcodes.IFNULL,
+                "ROR: != NULL replaced with == NULL"));
     }
 
     public EqualsMethodVisitor(final MethodMutatorFactory factory,
@@ -160,6 +168,14 @@ class NotEqualsMethodVisitor extends AbstractJumpMutator {
                 "ROR: < replaced with !="));
         MUTATIONS.put(Opcodes.IF_ICMPLT, new Substitution(Opcodes.IF_ICMPNE, 
                 "ROR: < replaced with !="));
+        
+        //replace == with != (reference)
+        MUTATIONS.put(Opcodes.IF_ACMPEQ, new Substitution(Opcodes.IF_ACMPNE, 
+                "ROR: != replaced with == (reference)"));
+        
+        //replace == null with != null
+        MUTATIONS.put(Opcodes.IFNULL, new Substitution(Opcodes.IFNONNULL,
+                "ROR: != NULL replaced with == NULL"));
     }
 
     public NotEqualsMethodVisitor(final MethodMutatorFactory factory,
