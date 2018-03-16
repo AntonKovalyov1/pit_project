@@ -16,7 +16,7 @@ import org.pitest.mutationtest.engine.gregor.MutationContext;
  */
 public enum ROR implements MethodMutatorFactory {
 
-    ROR_EQUALS_MUTATOR {
+    EQUALS_MUTATOR {
         @Override
         public MethodVisitor create(final MutationContext context,
                 final MethodInfo methodInfo,
@@ -24,7 +24,7 @@ public enum ROR implements MethodMutatorFactory {
             return new EqualsMethodVisitor(this, context, methodVisitor);
         }
     },
-    ROR_NOT_EQUALS_MUTATOR {
+    NOT_EQUALS_MUTATOR {
         @Override
         public MethodVisitor create(final MutationContext context,
                 final MethodInfo methodInfo,
@@ -32,7 +32,7 @@ public enum ROR implements MethodMutatorFactory {
             return new NotEqualsMethodVisitor(this, context, methodVisitor);
         }
     },
-    ROR_LESS_THAN_MUTATOR {
+    LESS_THAN_MUTATOR {
         @Override
         public MethodVisitor create(final MutationContext context,
                 final MethodInfo methodInfo,
@@ -40,7 +40,7 @@ public enum ROR implements MethodMutatorFactory {
             return new LessThanMethodVisitor(this, context, methodVisitor);
         }
     },
-    ROR_LESS_THAN_OR_EQUALS_MUTATOR {
+    LESS_THAN_OR_EQUALS_MUTATOR {
         @Override
         public MethodVisitor create(final MutationContext context,
                 final MethodInfo methodInfo,
@@ -49,7 +49,7 @@ public enum ROR implements MethodMutatorFactory {
                     methodVisitor);
         }
     },
-    ROR_GREATER_THAN_MUTATOR {
+    GREATER_THAN_MUTATOR {
         @Override
         public MethodVisitor create(final MutationContext context,
                 final MethodInfo methodInfo,
@@ -57,7 +57,7 @@ public enum ROR implements MethodMutatorFactory {
             return new GreaterThanMethodVisitor(this, context, methodVisitor);
         }
     },
-    ROR_GREATER_THAN_OR_EQUALS_MUTATOR {
+    GREATER_THAN_OR_EQUALS_MUTATOR {
         @Override
         public MethodVisitor create(final MutationContext context,
                 final MethodInfo methodInfo,
@@ -74,7 +74,7 @@ public enum ROR implements MethodMutatorFactory {
 
     @Override
     public String getName() {
-        return name();
+        return "ROR_" + name();
     }
 }
 

@@ -291,15 +291,13 @@ public final class Mutator {
     }
     
     private static Collection<MethodMutatorFactory> aodMutators() {
-        return group(AOD.FIRST_OPERAND_MUTATOR, 
-                     AOD.SECOND_OPERAND_MUTATOR);
+        return group(AOD.FIRST_OPERAND_MUTATOR, AOD.SECOND_OPERAND_MUTATOR);
     }
     
     private static Collection<MethodMutatorFactory> rorMutators() {
-        return group(ROR.ROR_EQUALS_MUTATOR, ROR.ROR_GREATER_THAN_MUTATOR, 
-                ROR.ROR_GREATER_THAN_OR_EQUALS_MUTATOR, 
-                ROR.ROR_LESS_THAN_MUTATOR, ROR.ROR_LESS_THAN_OR_EQUALS_MUTATOR, 
-                ROR.ROR_NOT_EQUALS_MUTATOR);
+        return group(ROR.EQUALS_MUTATOR, ROR.GREATER_THAN_MUTATOR, 
+                ROR.GREATER_THAN_OR_EQUALS_MUTATOR, ROR.LESS_THAN_MUTATOR, 
+                ROR.LESS_THAN_OR_EQUALS_MUTATOR, ROR.NOT_EQUALS_MUTATOR);
     }
     
     private static Collection<MethodMutatorFactory> aorMutators() {
