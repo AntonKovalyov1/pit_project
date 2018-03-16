@@ -37,7 +37,7 @@ public enum AOD implements MethodMutatorFactory {
 
     @Override
     public String getName() {
-        return name();
+        return "AOD_" + name();
     }
 }
 
