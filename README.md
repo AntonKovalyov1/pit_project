@@ -26,7 +26,7 @@ To run new operators on a project:
      where CUSTOM includes all new operators, you can also add other mutators or declare the new mutators one by one, e.g.,                      <mutator>ROR</mutator>
      For more information and to change other configurations visit http://pitest.org/quickstart/maven/
      
-  3. input the following command in the commandline: mvn org.pitest:pitest-maven:1.4.0-SNAPSHOT:mutationCoverage
+  3. input the following command in the commandline once in the project directory: mvn org.pitest:pitest-maven:1.4.0-SNAPSHOT:mutationCoverage
   
 A detailet HTML report will be found in the pit-reports folder located at your project's target folder
 
